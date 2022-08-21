@@ -11,11 +11,11 @@ class API{
     Uri url = Uri.parse('$urlBase/$digimonName');
     http.Response response = await http.get(url);
 
-      Map<String, dynamic> dadosJson = json.decode(response.body);
-      print('digi> ${dadosJson.toString()}');
-      Digimon digimon = Digimon();
+    Map<String, dynamic> dadosJson = json.decode(response.body);
+      /*Digimon digimon = Digimon();
       digimon.imagem = dadosJson['images'][0]['href'].toString();
-      print("image: ${digimon.imagem}");
-      return digimon;
+      print("image: ${digimon.imagem}");*/
+    Digimon digimon = Digimon.fromJson(dadosJson);
+    return digimon;
     }
 }

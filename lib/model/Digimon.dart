@@ -7,8 +7,9 @@ class Digimon{
 
   factory Digimon.fromJson(Map<String, dynamic> json) {
     return Digimon(
-      id: json['id'],
+      imagem: json['images'][0]['href'],
       nome: json['name'],
+      id: json['id'],
     );
   }
 }

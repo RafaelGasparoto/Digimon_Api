@@ -24,13 +24,11 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
       future: _searchDigimon(widget.search),
       builder: (context, snapshot) =>
           snapshot.hasData ? Container(
+            alignment: Alignment.center,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(snapshot.data!.nome.toString()),
-
                 Image(image: NetworkImage(snapshot.data!.imagem.toString())),
-
               ],
             ),
           ) : const CircularProgressIndicator(),
