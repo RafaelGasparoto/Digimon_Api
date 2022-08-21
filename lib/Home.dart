@@ -38,3 +38,7 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+final List<String> allDigimons = [
+
+];
