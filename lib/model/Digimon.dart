@@ -9,7 +9,7 @@ class Digimon{
     return Digimon(
       imagem: json['images'][0]['href'],
       nome: json['name'],
-      id: json['id'],
+      id: json['id'].toString()
     );
   }
 }

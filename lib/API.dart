@@ -10,11 +10,8 @@ class API{
   Future<Digimon>search (String digimonName) async{
     Uri url = Uri.parse('$urlBase/$digimonName');
     http.Response response = await http.get(url);
-
+    print('status: ${response.statusCode}');
     Map<String, dynamic> dadosJson = json.decode(response.body);
-      /*Digimon digimon = Digimon();
-      digimon.imagem = dadosJson['images'][0]['href'].toString();
-      print("image: ${digimon.imagem}");*/
     Digimon digimon = Digimon.fromJson(dadosJson);
     return digimon;
     }
