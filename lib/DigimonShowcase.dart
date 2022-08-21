@@ -22,16 +22,36 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
   Widget build(BuildContext context) {
     return FutureBuilder<Digimon>(
       future: _searchDigimon(widget.search),
-      builder: (context, snapshot) =>
-          snapshot.hasData ? Container(
-            alignment: Alignment.center,
-            child: Column(
-              children: [
-                Text(snapshot.data!.nome.toString()),
-                Image(image: NetworkImage(snapshot.data!.imagem.toString())),
-              ],
-            ),
-          ) : const CircularProgressIndicator(),
+      builder: (context, snapshot) => snapshot.hasData
+          ? Container(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      snapshot.data!.name.toString(),
+                      style: const TextStyle(fontSize: 25),
+                    ),
+                  ),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image(
+                          image:
+                              NetworkImage(snapshot.data!.image.toString()))),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Text(
+                      'Type: ${snapshot.data!.type.toString()}',
+                      style: const TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }

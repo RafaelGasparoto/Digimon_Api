@@ -18,7 +18,7 @@ class CustomSearchDelegate extends SearchDelegate<String> {
         onPressed: () {
           close(context, "");
         },
-        icon: Icon(Icons.arrow_back));
+        icon: const Icon(Icons.arrow_back));
   }
 
   @override

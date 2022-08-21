@@ -1,15 +1,17 @@
 class Digimon{
-  String? nome;
+  String? name;
   String? id;
-  String? imagem;
+  String? image;
+  String? type;
 
-  Digimon({this.nome, this.id, this.imagem});
+  Digimon({this.name, this.id, this.image, this.type});
 
   factory Digimon.fromJson(Map<String, dynamic> json) {
     return Digimon(
-      imagem: json['images'][0]['href'],
-      nome: json['name'],
-      id: json['id'].toString()
+      image: json['images'][0]['href'],
+      name: json['name'],
+      id: json['id'].toString(),
+      type: json['types'][0]['type']
     );
   }
 }
