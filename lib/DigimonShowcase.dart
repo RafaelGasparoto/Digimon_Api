@@ -23,7 +23,13 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
     return FutureBuilder<Digimon>(
       future: _searchDigimon(widget.search),
       builder: (context, snapshot) =>
-          snapshot.hasData ?
+          snapshot.hasData ? Container(
+            height: 200,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image:
+                    NetworkImage("https://digimon-api.com/images/digimon/w/Garummon.png"))),
           ) : const CircularProgressIndicator(),
     );
   }
