@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomSearchDelegate extends SearchDelegate<String> {
-  final List<String> digimonsStandard;
-  final List<String> allDigimons;
+  final List<String> digimonsSuggestions;
 
-  CustomSearchDelegate({required this.digimonsStandard, required this.allDigimons});
+  CustomSearchDelegate({required this.digimonsSuggestions});
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -28,22 +27,12 @@ class CustomSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    final List<String> digimons = digimonsStandard.where(
-          (digimon) => digimon.toLowerCase().contains(
-        query.toLowerCase(),
-      ),
-    ).toList();
-
-    return ListView.builder(
-        itemCount: digimons.length,
-        itemBuilder: (context, index) => ListTile(
-          title: Text(digimons[index]),
-        ));
+    return Container();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final List<String> digimons = allDigimons.where(
+    final List<String> digimons = digimonsSuggestions.where(
           (digimon) => digimon.toLowerCase().contains(
         query.toLowerCase(),
       ),
