@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'CustomSearchDelegate.dart';
 import 'DigimonShowcase.dart';
 
@@ -10,7 +10,20 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
+
 class _HomeState extends State<Home> {
+  playSound(String path) async{
+    AssetsAudioPlayer audioPlayer = AssetsAudioPlayer();
+    await audioPlayer.open(
+      Audio('assets/audio/$path')
+    );
+    print('teste');
+  }
+
+  @override
+  void initState() {
+    playSound('digimon_intro.mp3');
+  }
   String _result = '1';
   @override
   Widget build(BuildContext context) {
@@ -34,6 +47,7 @@ class _HomeState extends State<Home> {
                       context: context, delegate: CustomSearchDelegate(digimonsSuggestions: allDigimons));
                   setState(() {
                     _result = res!;
+                    playSound('digievolution.mp3');
                   });
                 },
                 icon: const Icon(Icons.search),

@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.5
+  assets_audio_player: ^3.0.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -60,6 +61,8 @@ flutter:
   uses-material-design: true
   assets:
     - images/logo_digimon.png
+    - assets/audio/digimon_intro.mp3
+    - assets/audio/digievolution.mp3
   # To add assets to your application, add an assets section, like this:
   #   - images/a_dot_ham.jpeg
 
