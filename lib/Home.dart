@@ -46,7 +46,6 @@ class _HomeState extends State<Home> {
                     delegate:
                         CustomSearchDelegate(digimonsSuggestions: allDigimons),
                   );
-
                   setState(() {
                     _result = res!;
                   });
@@ -62,7 +61,17 @@ class _HomeState extends State<Home> {
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
-        child: DigimonShowcase(_result),
+        child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  if(_result == "Agumon")
+                    playSound('Agumon_chama_nenem.mp3');
+                },
+                child: Text('Som')),
+            Expanded(child: DigimonShowcase(_result)),
+          ],
+        ),
       ),
     );
   }
