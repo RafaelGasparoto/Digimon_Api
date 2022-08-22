@@ -61,8 +61,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/logo_digimon.png
-    - assets/audio/digimon_intro.mp3
-    - assets/audio/digievolution.mp3
+    - assets/audio/
   # To add assets to your application, add an assets section, like this:
   #   - images/a_dot_ham.jpeg
 

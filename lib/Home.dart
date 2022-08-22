@@ -24,6 +24,7 @@ class _HomeState extends State<Home> {
   void initState() {
     playSound('digimon_intro.mp3');
   }
+
   String _result = '1';
   @override
   Widget build(BuildContext context) {
@@ -47,8 +48,8 @@ class _HomeState extends State<Home> {
                       context: context, delegate: CustomSearchDelegate(digimonsSuggestions: allDigimons));
                   setState(() {
                     _result = res!;
-                    playSound('digievolution.mp3');
                   });
+                  playSound('digi.mp3');
                 },
                 icon: const Icon(Icons.search),
                 iconSize: 30,
