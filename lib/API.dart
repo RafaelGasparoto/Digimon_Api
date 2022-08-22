@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
-
 import 'model/Digimon.dart';
 import 'package:http/http.dart' as http;
 

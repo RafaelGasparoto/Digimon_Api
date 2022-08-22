@@ -1,6 +1,6 @@
-import 'package:digimon/API.dart';
+import 'API.dart';
 import 'package:flutter/material.dart';
-import '../model/Digimon.dart';
+import 'model/Digimon.dart';
 
 class DigimonShowcase extends StatefulWidget {
   String search;
@@ -34,6 +34,7 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
                       child: Text(
                         snapshot.data!.name.toString(),
                         style: const TextStyle(fontSize: 25),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
@@ -61,7 +62,7 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 15, left: 25, bottom: 15),
+                        padding: EdgeInsets.only(top: 15, bottom: 15),
                         child: Text(
                           'Type',
                           style: TextStyle(
@@ -72,13 +73,13 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
                       ),
                     ],
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        flex: 3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 25),
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          flex: 1,
                           child: ListView.separated(
                             shrinkWrap: true,
                             itemBuilder: (BuildContext context, int index) {
@@ -96,17 +97,17 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
                             itemCount: snapshot.data!.skills!.length,
                           ),
                         ),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Text(
-                          snapshot.data!.type.toString(),
-                          style: const TextStyle(
-                            fontSize: 15,
+                        Flexible(
+                          flex: 1,
+                          child: Text(
+                            snapshot.data!.type.toString(),
+                            style: const TextStyle(
+                              fontSize: 15,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
                 ],
               ),

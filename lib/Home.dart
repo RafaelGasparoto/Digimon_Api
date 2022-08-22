@@ -17,7 +17,6 @@ class _HomeState extends State<Home> {
     await audioPlayer.open(
       Audio('assets/audio/$path')
     );
-    print('teste');
   }
 
   @override
