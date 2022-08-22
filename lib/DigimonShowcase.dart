@@ -12,15 +12,15 @@ class DigimonShowcase extends StatefulWidget {
 }
 
 class _DigimonShowcaseState extends State<DigimonShowcase> {
-  Future<List<Digimon>> _searchDigimon(String digimonName) {
+  Future<Digimon> _searchDigimon(String digimonName) {
     API api = API();
-    Future<List<Digimon>> digimon = api.search(digimonName);
+    Future<Digimon> digimon = api.search(digimonName);
     return digimon;
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Digimon>>(
+    return FutureBuilder<Digimon>(
       future: _searchDigimon(widget.search),
       builder: (context, snapshot) => snapshot.hasData
           ? Container(
@@ -29,7 +29,8 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("",
+                    child: Text(
+                      snapshot.data!.name.toString(),
                       style: const TextStyle(fontSize: 25),
                     ),
                   ),
@@ -37,8 +38,16 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
                       borderRadius: BorderRadius.circular(10),
                       child: Image(
                           image:
-                              NetworkImage(""),
-                      ))
+                              NetworkImage(snapshot.data!.image.toString()))),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Text(
+                      'Type: ${snapshot.data!.type.toString()}',
+                      style: const TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             )
