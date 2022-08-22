@@ -74,7 +74,9 @@ class _HomeState extends State<Home> {
                 if (_result == "Tentomon")
                   playSound('Tentomon_trovao_bebe.mp3');
                 if (_result == "Palmon")
-                  playSound('Tentomon_trovao_bebe.mp3');
+                  playSound('Palmon_hera_venenosa.mp3');
+                if (_result == "Patamon")
+                  playSound('Patamon_bolha_de_ar.mp3');
 
               },
               icon: Icon(Icons.play_arrow_sharp),
