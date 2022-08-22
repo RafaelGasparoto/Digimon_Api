@@ -24,53 +24,90 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
       future: _searchDigimon(widget.search),
       builder: (context, snapshot) => snapshot.hasData
           ? Container(
-              alignment: Alignment.center,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      snapshot.data!.name.toString(),
-                      style: const TextStyle(fontSize: 25),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: InteractiveViewer(
-                        child: Image(
-                            image:
-                                NetworkImage(snapshot.data!.image.toString())),
-                      )),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Text(
-                      'Type: ${snapshot.data!.type.toString()}',
-                      style: const TextStyle(
-                        fontSize: 15,
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        snapshot.data!.name.toString(),
+                        style: const TextStyle(fontSize: 25),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        List<dynamic>? skills = snapshot.data!.skills;
-                        String skill = skills![index]['skill'].toString();
-                        return Text(
-                          skill,
+                  Align(
+                    alignment: Alignment.center,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: InteractiveViewer(
+                          child: Image(
+                              image:
+                                  NetworkImage(snapshot.data!.image.toString())),
+                        )),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(top: 15, bottom: 15),
+                        child: Text(
+                          'Skills',
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 15, left: 25, bottom: 15),
+                        child: Text(
+                          'Type',
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        flex: 3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 25),
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            itemBuilder: (BuildContext context, int index) {
+                              List<dynamic>? skills = snapshot.data!.skills;
+                              String skill = skills![index]['skill'].toString();
+                              return Text(
+                                skill,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                ),
+                              );
+                            },
+                            separatorBuilder: (BuildContext context, int index) =>
+                            const Padding(padding: EdgeInsets.only(bottom: 15)),
+                            itemCount: snapshot.data!.skills!.length,
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Text(
+                          snapshot.data!.type.toString(),
                           style: const TextStyle(
                             fontSize: 15,
                           ),
-                        );
-                      },
-                      separatorBuilder: (BuildContext context, int index) =>
-                      const Padding(padding: EdgeInsets.only(bottom: 15)),
-                      itemCount: snapshot.data!.skills!.length,
-                    ),
+                        ),
+                      ),
+                    ],
                   )
-
                 ],
               ),
             )
