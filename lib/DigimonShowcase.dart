@@ -51,6 +51,25 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        List<dynamic>? skills = snapshot.data!.skills;
+                        String skill = skills![index]['skill'].toString();
+                        return Text(
+                          skill,
+                          style: const TextStyle(
+                            fontSize: 15,
+                          ),
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) =>
+                      const Padding(padding: EdgeInsets.only(bottom: 15)),
+                      itemCount: snapshot.data!.skills!.length,
+                    ),
+                  )
 
                 ],
               ),
