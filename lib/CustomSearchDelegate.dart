@@ -9,20 +9,22 @@ class CustomSearchDelegate extends SearchDelegate<String> {
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
-          onPressed: () {
-            query = "";
-          },
-          icon: const Icon(Icons.clear))
+        onPressed: () {
+          query = "";
+        },
+        icon: const Icon(Icons.clear),
+      )
     ];
   }
 
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-        onPressed: () {
-          close(context, "1");
-        },
-        icon: const Icon(Icons.arrow_back));
+      onPressed: () {
+        close(context, "1");
+      },
+      icon: const Icon(Icons.arrow_back),
+    );
   }
 
   @override
@@ -32,20 +34,23 @@ class CustomSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final List<String> digimons = digimonsSuggestions.where(
+    final List<String> digimons = digimonsSuggestions
+        .where(
           (digimon) => digimon.toLowerCase().contains(
-        query.toLowerCase(),
-      ),
-    ).toList();
+                query.toLowerCase(),
+              ),
+        )
+        .toList();
 
     return ListView.builder(
-        itemCount: digimons.length,
-        itemBuilder: (context, index) => ListTile(
-          onTap: (){
-            query = digimons[index];
-            close(context, query);
-          },
-          title: Text(digimons[index]),
-        ));
+      itemCount: digimons.length,
+      itemBuilder: (context, index) => ListTile(
+        onTap: () {
+          query = digimons[index];
+          close(context, query);
+        },
+        title: Text(digimons[index]),
+      ),
+    );
   }
 }
