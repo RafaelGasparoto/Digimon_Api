@@ -36,9 +36,11 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
                   ),
                   ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image(
-                          image:
-                              NetworkImage(snapshot.data!.image.toString()))),
+                      child: InteractiveViewer(
+                        child: Image(
+                            image:
+                                NetworkImage(snapshot.data!.image.toString())),
+                      )),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Text(
