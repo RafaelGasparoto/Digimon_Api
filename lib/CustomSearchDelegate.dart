@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomSearchDelegate extends SearchDelegate<String> {
-  final List<String> allDigimonsSuggestions;
+  final List<String> digimonsStandard;
+  final List<String> allDigimons;
 
-  CustomSearchDelegate({required this.allDigimonsSuggestions});
+  CustomSearchDelegate({required this.digimonsStandard, required this.allDigimons});
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -27,26 +28,35 @@ class CustomSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    close(context, query);
-    return Container();
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    final List<String> allDigimons = allDigimonsSuggestions.where(
+    final List<String> digimons = digimonsStandard.where(
           (digimon) => digimon.toLowerCase().contains(
         query.toLowerCase(),
       ),
     ).toList();
 
     return ListView.builder(
-        itemCount: allDigimons.length,
+        itemCount: digimons.length,
+        itemBuilder: (context, index) => ListTile(
+          title: Text(digimons[index]),
+        ));
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final List<String> digimons = allDigimons.where(
+          (digimon) => digimon.toLowerCase().contains(
+        query.toLowerCase(),
+      ),
+    ).toList();
+
+    return ListView.builder(
+        itemCount: digimons.length,
         itemBuilder: (context, index) => ListTile(
           onTap: (){
-            query = allDigimons[index];
+            query = digimons[index];
             close(context, query);
           },
-          title: Text(allDigimons[index]),
+          title: Text(digimons[index]),
         ));
   }
 }

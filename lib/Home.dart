@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
           IconButton(
             onPressed: () async {
               String? res = await showSearch(
-                  context: context, delegate: CustomSearchDelegate(allDigimonsSuggestions: allDigimons));
+                  context: context, delegate: CustomSearchDelegate(allDigimons: allDigimons, digimonsStandard: digimonsStandard));
               setState(() {
                 _result = res!;
               });
@@ -38,6 +38,14 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+final List<String> digimonsStandard = [
+  'Garummon',
+  'Craniummon',
+  'Holy Angemon',
+  'Ancient Beatmon',
+  'Dukemon(Crimson Mode)',
+];
 
 final List<String> allDigimons = [
 'Garummon',
