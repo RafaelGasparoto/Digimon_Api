@@ -51,6 +51,7 @@ class _DigimonShowcaseState extends State<DigimonShowcase> {
                       ),
                     ),
                   ),
+
                 ],
               ),
             )
