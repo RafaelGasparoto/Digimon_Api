@@ -63,12 +63,23 @@ class _HomeState extends State<Home> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            ElevatedButton(
-                onPressed: () {
-                  if(_result == "Agumon")
-                    playSound('Agumon_chama_nenem.mp3');
-                },
-                child: Text('Som')),
+            IconButton(
+              onPressed: () {
+                if (_result == "Agumon")
+                  playSound('Agumon_chama_nenem.mp3');
+                if (_result == "Gabumon")
+                  playSound('Gabumon_rajada_azul.mp3');
+                if (_result == "Piyomon")
+                  playSound('Piyomon_espiral_magico.mp3');
+                if (_result == "Tentomon")
+                  playSound('Tentomon_trovao_bebe.mp3');
+                if (_result == "Palmon")
+                  playSound('Tentomon_trovao_bebe.mp3');
+
+              },
+              icon: Icon(Icons.play_arrow_sharp),
+              color: Colors.deepOrange,
+            ),
             Expanded(child: DigimonShowcase(_result)),
           ],
         ),
