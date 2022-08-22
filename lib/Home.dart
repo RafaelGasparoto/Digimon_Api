@@ -16,25 +16,33 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80),
+        preferredSize: const Size.fromHeight(100),
         child: AppBar(
-          title: Image.asset('images/logo_digimon.png',
-              width: 120,
-              height: 30),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                String? res = await showSearch(
-                    context: context, delegate: CustomSearchDelegate(digimonsSuggestions: allDigimons));
-                setState(() {
-                  _result = res!;
-                });
-              },
-              icon: const Icon(Icons.search),
-              iconSize: 30,
-              padding: const EdgeInsets.only(right: 20),
-            )
-          ],
+          centerTitle: true,
+          flexibleSpace: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 28, right: 60),
+                child: Image.asset('images/logo_digimon.png',
+                    height: 90),
+              ),
+              IconButton(
+                onPressed: () async {
+                  String? res = await showSearch(
+                      context: context, delegate: CustomSearchDelegate(digimonsSuggestions: allDigimons));
+                  setState(() {
+                    _result = res!;
+                  });
+                },
+                icon: const Icon(Icons.search),
+                iconSize: 30,
+                padding: const EdgeInsets.only(top: 35, right: 20),
+              )
+
+            ],
+          ),
         ),
       ),
       body: Container(
