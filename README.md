@@ -9,3 +9,7 @@ A consulta para os Digimons são feitas através de uma API chamada <a target="_
 Pretendo adicionar mais opções de interação com os Digimons.  
 
 Agumon: CHAMA NENEM!!!
+
+
+https://user-images.githubusercontent.com/74691873/186208480-cd823d7f-d02c-49e9-8045-9a42a618d557.mp4
+
